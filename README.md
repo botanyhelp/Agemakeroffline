@@ -1,0 +1,3 @@
+# Agemakeroffline
+
+The application logic is written in Javascript and uses the entered birthdate to calculate the current age to one decimal place.  This application is useful for researchers that wish to record the present age of participants (instead of entering a birthdate and current date).  Sometimes the current age is the desired value.  This web application also has the benefit of being an offline web app.  Therefore, when you revisit this URL later, when you have no Internet connection, it still works (on all modern web browsers).  It also has the benefit of not recording or transmitting any data.
