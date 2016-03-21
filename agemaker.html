@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" manifest="ws.appcache">
+<head>
+<title>Agemaker
+</title>
+<meta charset="utf-8"> <meta name="apple-mobile-web-app-capable" content="yes"/>
+<link rel="apple-touch-icon" href="touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+<link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-6-plus.png"> 
+<link rel="apple-touch-startup-image" href="startup.png">
+<meta name="viewport" content="width=device-width;"/>
+<link type="text/css" rel="stylesheet" src="styles2.css" media="all"/>
+</head>
+<body>
+
+<header>
+<h1>Age calculator</h1>
+</header>
+<p id="age">0</p>
+<form id="dateForm" method="POST" action="/ht4/index.html">
+    <p>
+    <p>
+    <label for="yourbirthday">Enter Birthday</label>
+    </p>
+    <p>
+    <input type="date" name="yourbirthday" id="yourbirthday">  mm/dd/yyyy
+    </p>
+    <input type="submit" value="Calculate Age">
+    </p>
+</form>
+<script>
+    addEventListener("load", function() {
+        setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar() { window.scrollTo(0,1);
+    }
+    document.querySelector("#dateForm").addEventListener("submit",
+     function(e) {
+        e.preventDefault();
+        var today = new Date();
+        var input = document.getElementById( 'yourbirthday' ).value;
+        var birthday = new Date( input );
+        console.dir(birthday);
+        console.dir(today);
+        var diffMs = (today-birthday);
+        // days
+        var diffDays = Math.round(diffMs / 86400000); 
+        // years
+        var diffYears = diffMs / (365.25*86400000); 
+        //diffYearsFormatted = diffYears.toFixed(2);
+        //diffYearsFormatted = diffYears.toFixed(9);
+        //diffYearsFormatted = diffYears.toFixed(2);
+        diffYearsString = diffYears.toString();
+        end = diffYearsString.indexOf(".");
+        diffYearsFormatted=diffYearsString.substring(0,end+2);
+
+        document.getElementById( "age" ).innerHTML=diffYearsFormatted+" years";
+        //alert(diffYearsFormatted+ " years ");
+        //var ageElement = document.getElementById( 'age' );
+        //ageElement.value=diffYearsFormatted;
+        //ageElement.value="done";
+        //init();
+    },false);
+</script>
+</body>
+</html>
